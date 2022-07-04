@@ -14,8 +14,8 @@ const userController = {
   getUserById({ params }, res) {
     User.findById({ _id: params.id })
       .populate({
-        path: "thought",
-        path: "friends",
+          path: "thoughts",
+          select: "-__v"
       })
       .then((dbUserData) => {
         if (!dbUserData) {
