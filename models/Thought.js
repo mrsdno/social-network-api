@@ -28,10 +28,10 @@ const ReactionSchema = new Schema({
 
 
 const ThoughtSchema = new Schema({
-  thoughtText: {
-    type: String,
-    required: "You need to include some thought text!",
-    validate: [({ length }) => length >= 1 && length <= 280, "The thought must be between 1 and 290 characters."]
+    thoughtText: {
+        type: String,
+        required: "You need to include some thought text!",
+        validate: [({ length }) => length >= 1 && length <= 280, "The thought must be between 1 and 290 characters."]
     },
     createdAt: {
         type: Date,
@@ -48,7 +48,8 @@ const ThoughtSchema = new Schema({
         toJSON: {
             getters: true,
             virtuals: true
-    }
+        },
+        id: false,
     });
 
 
