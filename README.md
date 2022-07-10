@@ -1,148 +1,67 @@
-# social-network-api
+# dno-tech-blog
+
+![screenshot](./assets/screenshot.JPG)
 
 ## User Story
 
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+    AS A social media startup
+    I WANT an API for my social network that uses a NoSQL database
+    SO THAT my website can handle large amounts of unstructured data
 
-## Acceptance Criteria
+## Table of Contents
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+- [dno-tech-blog](#dno-tech-blog)
+  - [User Story](#user-story)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Questions](#questions)
 
-## Models
+## Description
 
-User
+*Built using:*
 
-username
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-    String
-    Unique
-    Required
-    Trimmed
-    
-email
+I built an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. Express.js was used for routing, I used MongoDB for the database, and utilized the Mongoose ODM. I also used the native JavaScript Date object to format timestamps.
 
-    String
-    Required
-    Unique
-    Must match a valid email address (look into Mongoose's matching validation)
+## Installation
 
-thoughts
+*To set up this file locally...*
 
-    Array of _id values referencing the Thought model
+ - Clone this repo to your computer
+ - Run `npm i` to install the dependencies
+ - Set up the SQL database required on your local machine by creating a MySQL session and running `source db/schema`
 
-friends
+## Usage
 
-    Array of _id values referencing the User model (self-reference)
+*To run this application locally...*
 
-Schema Settings
+To start the application: `npm start`
 
-    Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+Interact with the API using: [localhost:3005/api/](localhost:3005/api/).
 
-Thought
+## Contributing
 
-    thoughtText
+If you would like to contribute to this project, create a pull request or reach out to me directly at the email below.
 
-        String
-        Required
-        Must be between 1 and 280 characters
-    
-    createdAt
+## License
 
-        Date
-        Set default value to the current timestamp
-        Use a getter method to format the timestamp on query
-        
-username (The user that created this thought)
+Copyright © 2022 Christine Diienno
 
-String
-Required
-reactions (These are like replies)
+This project is licensed under the [MIT License](https://mit-license.org/).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Array of nested documents created with the reactionSchema
-Schema Settings
+## Questions
 
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+Do you have any questions? 
 
-Reaction (SCHEMA ONLY)
+You can find my github profile with contact details here: [mrsdno](https://github.com/mrsdno)
 
-reactionId
-
-Use Mongoose's ObjectId data type
-Default value is set to a new ObjectId
-reactionBody
-
-String
-Required
-280 character maximum
-username
-
-String
-Required
-createdAt
-
-Date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-Schema Settings
-
-This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
-
-API Routes
-/api/users
-
-GET all users
-
-GET a single user by its _id and populated thought and friend data
-
-POST a new user:
-
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
-PUT to update a user by its _id
-
-DELETE to remove user by its _id
-
-BONUS: Remove a user's associated thoughts when deleted.
-
-/api/users/:userId/friends/:friendId
-
-POST to add a new friend to a user's friend list
-
-DELETE to remove a friend from a user's friend list
-
-/api/thoughts
-
-GET to get all thoughts
-
-GET to get a single thought by its _id
-
-POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
-
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-PUT to update a thought by its _id
-
-DELETE to remove a thought by its _id
-
-/api/thoughts/:thoughtId/reactions
-
-POST to create a reaction stored in a single thought's reactions array field
-
-DELETE to pull and remove a reaction by the reaction's reactionId value
+Or you can email me here: [christine@dno.dev](mailto:christine@dno.dev)

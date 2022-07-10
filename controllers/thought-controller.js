@@ -63,6 +63,7 @@ const thoughtController = {
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
           res.status(400).json({ message: "No thought found with this id!" });
+          return;
         }
         res.json(dbThoughtData);
       })
@@ -74,6 +75,7 @@ const thoughtController = {
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
           res.status(400).json({ message: "No thought found with this id!" });
+          return;
         }
         res.json(dbThoughtData);
       })
