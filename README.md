@@ -1,6 +1,8 @@
 # dno-tech-blog
 
-![screenshot](./assets/screenshot.JPG)
+## Video Demo
+  
+  See a video demonstation of the functionality of this application here: [https://drive.google.com/file/d/1PLEzFAsaE08TIHZgTssrur9TybynTMGn/view?usp=sharing](https://drive.google.com/file/d/1PLEzFAsaE08TIHZgTssrur9TybynTMGn/view?usp=sharing)
 
 ## User Story
 
@@ -37,7 +39,6 @@ I built an API for a social network web application where users can share their 
 
  - Clone this repo to your computer
  - Run `npm i` to install the dependencies
- - Set up the SQL database required on your local machine by creating a MySQL session and running `source db/schema`
 
 ## Usage
 
